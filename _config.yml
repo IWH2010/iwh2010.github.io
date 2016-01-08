@@ -1,0 +1,53 @@
+#
+# This file contains configuration flags to customize your site
+#
+
+# Name of your site (displayed in the header)
+name: Reversers Blog
+
+# Short bio or description (displayed in the header)
+description: An amateurs guide to reverse engineering
+
+# URL of your avatar or profile pic (you could use your GitHub profile pic)
+avatar: https://github.com/IWH2010/iwh2010.github.io/blob/master/images/Logo.jpg?raw=true
+
+#
+# Flags below are optional
+#
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  github: iwh2010
+  rss: Create RSS feed
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics:
+
+#
+# !! You don't need to change any of the configuration flags below !!
+#
+
+markdown: redcarpet
+highlighter: pygments
+permalink: /:title/
+
+# The release of Jekyll Now that you're using
+version: v1.1.0
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  style: :expanded # You might prefer to minify using :compressed
+
+# Use the following plug-ins
+gems:
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jemoji
+
+# Exclude these files from your production _site
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - README.md
+    - CNAME
