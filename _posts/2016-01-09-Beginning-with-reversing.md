@@ -23,5 +23,3 @@ Head over to "Code-highlightning" and change the scheme from "Christmas Tree" to
 Click "OK" to save all changes.
 
 ![]({{ site.baseurl }}/images/olly_scheme.png "")
-
-sss
