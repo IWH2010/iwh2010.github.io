@@ -31,7 +31,7 @@ When debugging there are 9 registers we need to know about. These are "special p
  - ECX - Extended Counter Register
  - EDX - Extended Data Register
  - ESI - Extended Source Index
- - EDI - Extended Destination Index
+ - EDI - Extended destinationination Index
  - EBP - Extended Base Pointer
  - ESP - Extended Stack Pointer
  - EIP - Extended Instruction Pointer
@@ -183,11 +183,11 @@ The idiv instruction *can* set the C/O/Z flags if the result fits.
 Syntax:
  
  - IMUL value 
- - IMUL dest,value,value
- - MUL dest,value
+ - IMUL destination,value,value
+ - MUL destination,value
 
-IMUL multiplies either EAX with value (IMUL value) or it multiplies two values and puts them into a destination register (IMUL dest, value, value)
-or it multiplies a registerwith a value (IMUL dest, value).
+IMUL multiplies either EAX with value (IMUL value) or it multiplies two values and puts them into a destination register (IMUL destination, value, value)
+or it multiplies a registerwith a value (IMUL destination, value).
 
 If the multiplication result is too big to fit into the destination register, the O/C flags are set. The Z flag can be set, too.
 
@@ -199,10 +199,116 @@ INC is the opposite of the DEC instruction; it increases values by 1. INC *can* 
 
 **INT**
 
-Syntax: INT dest 
+Syntax: INT destination 
 
-Generates a call to an interrupt handler. The dest value must be an integer (e.g., INT 21h).
+Generates a call to an interrupt handler. The destination value must be an integer (e.g., INT 21h).
 INT3 and INTO are interrupt calls that take no parameters but call the handlers for interrupts 3 and 4, respectively.
+
+
+**MOV (Move)**
+
+Syntax: MOV destination, source
+
+This is an easy to understand instruction. MOV copies the value from source to destination and source stays what it was before.
+
+There are some variants of MOV:
+ 
+ - MOVS/MOVSB/MOVSW/MOVSD EDI, ESI: Those variants copy the byte/word/dword ESI points to, to the space EDI points to.
+ - MOVSX: 	MOVSX expands Byte or Word operands to Word or Dword size and keeps the sign of the value.
+ - MOVZX:	MOVZX expands Byte or Word operands to Word or Dword size and fills the rest of the space with 0.
+
+**MUL (Multiplication)**
+
+Syntax: MUL value 
+
+This instruction is the same as IMUL, except that it multiplies unsigned. It *can* set the O/Z/F flags.
+
+**NOP (No Operation)**
+
+Syntax: NOP
+
+This instruction does absolutely nothing.
+
+**OR (Logical Inclusive Or)**
+
+Syntax: OR destination,source
+
+The OR instruction connects two values using the logical inclusive or. This instruction *clears* the O-Flag and the C-Flag and *can* set the Z-Flag.
+
+To understand OR better, consider those two binary values:
+
+- 1001010110
+- 0101001101
+     
+If you OR them, the result is 1101011111.
+
+Only when there are two 0 on top of each other, the resulting bit is 0. Else the resulting bit is 1.
+
+**POP**
+
+Syntax: POP destination
+
+POP loads the value of byte/word/dword ptr [esp] and puts it into destination. Additionally it increases the stack by the size of the value that was popped of the stack, so that the next
+POP would get the next value.
+
+
+**PUSH**
+
+Syntax: PUSH operand
+
+PUSH is the opposite of POP. It stores a value on the stack and decreases it by the size of the operand that was pushed, so that ESP points to the value that was pushed.
+
+
+**REP/REPE/REPZ/REPNE/REPNZ**
+
+Syntax: REP/REPE/REPZ/REPNE/REPNZ ins 
+
+Repeat Following String Instruction: Repeats ins until CX=0 or until indicated condition 
+
+ - (ZF=1, ZF=1, ZF=0, ZF=0) is met. The ins value must be a string operation such as CMPS, INS, LODS, MOVS, OUTS, SCAS, or STOS.
+
+
+**RET (Return)**
+
+Syntax: 
+	- RET
+    - RET digit
+
+RET does nothing but return from a part of code that was reached using a CALL instruction. RET digit *cleans* the stack before it returns.
+
+**SUB (Subtraction)**
+
+Syntax: SUB destination,source
+
+SUB is the opposite of the ADD command. It subtracts the value of source from the value of destination and stores the result in destination.
+
+SUB *can* set the Z/O/C flags.
+
+**TEST**
+
+Syntax: TEST operand1, operand2
+
+This instruction is in 99% of all cases used for "TEST EAX, EAX". It performs a Logical AND(AND instruction) but does not save the values.
+It *only* sets the Z-Flag, when EAX is 0 or clears it, when EAX is not 0. The O/C flags are *always* cleared.
+
+
+**XOR**
+
+Syntax: XOR destination,source
+
+The XOR instruction connects two values using logical exclusive OR (remember OR uses inclusive OR). 
+
+This instruction clears the O-Flag and the C-Flag and can set the Z-Flag.
+
+To understand XOR better, consider those two binary values:
+
+ - 1001010110
+ - 0101001101
+
+If you OR them, the result is 1100011011.
+
+When two bits on top of each other are equal, the resulting bit is 0. Else the resulting bit is 1.
+The most often seen use of XOR is “XOR, EAX, EAX”. This will set EAX to 0, because when you XOR a value with itself, the result is *always* 0.
 
 **JUMPS**
 
