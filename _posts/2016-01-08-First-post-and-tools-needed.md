@@ -14,8 +14,7 @@ Now before we get started we need to setup our workstation. This blog is made fo
 The debugger we are going to use is OllyDBG and IDA Pro, the version i'm using is 2.01 and can be found [here.](http://www.ollydbg.de/)
 My version of IDA Pro is 6.8.150423 and can be found on the web. :smirk:
 
-What we are gonna need next is software to detect if our target is protected. The most popular is PEiD however it has been disbanded, version 0.95 can be found [here.]
-(https://tuts4you.com/download.php?view.398)
+What we are gonna need next is software to detect if our target is protected. The most popular is PEiD however it has been disbanded, version 0.95 can be found [here.](https://tuts4you.com/download.php?view.398)
 You will also need a database [userdb.txt - ](http://handlers.sans.org/jclausing/userdb.txt) this file shall recide in the same folder as PEiD.
 
 I also recommend [Protection ID](http://pid.gamecopyworld.com/) - Your antivirus is gonna complain, whitelist it. [Stud PE](http://www.cgsoftlabs.ro/studpe.html) is also needed.
