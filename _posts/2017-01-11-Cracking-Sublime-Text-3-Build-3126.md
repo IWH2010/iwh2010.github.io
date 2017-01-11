@@ -19,3 +19,6 @@ Let's fire up Sublime.
 This is what we see.
 
 ![Sublime](/images/Sublime/S1.png)
+
+Looking at the top we can clearly see the "(UNREGISTERED)" label. In the "Help" -> "About box" we can see something similar.
+![Sublime](/images/Sublime/S2.png)
