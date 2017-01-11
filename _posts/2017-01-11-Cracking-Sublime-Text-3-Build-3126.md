@@ -49,7 +49,7 @@ Lets be honest, if I didn't play with the registration function in the "About" -
 It works in the same way, it compares the value of EAX with 1, however, when the license is read and declared invalid, EAX
 holds the value of 2. All we have to do now is simply change the line "cmp eax,1" to "comp eax,2", save the patch and run.
 
-![Sublime][/images/Sublime/S5.png]
+![Sublime](/images/Sublime/S5.png)
 
 No "(UNREGISTERED)" label at the top.
 Pressing the "About" tab asks us to remove the license.
