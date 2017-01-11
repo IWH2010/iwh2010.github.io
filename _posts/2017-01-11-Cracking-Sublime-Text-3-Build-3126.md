@@ -41,6 +41,8 @@ Lets step into the first call and do some browsing. After running around for a w
 ![Sublime](/images/Sublime/S4.png)
 
 00007FF79C7AB607: cmp eax,1
+
+
 00007FF79C7AB60A: sete al
 
 Lets be honest, if I didn't play with the registration function in the "About" -> "License" box I never would had figured this out.
